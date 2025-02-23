@@ -23,6 +23,7 @@ jobs:
 
     - name: Compile Java
       run: |
-        cd [Your Branch]/HolidayTravelVehicles 
+        cd Sitthida/HolidayTravelVehicles 
         javac -d . *.java
       # Compile java file from directory
+      
