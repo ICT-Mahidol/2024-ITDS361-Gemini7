@@ -26,4 +26,8 @@ jobs:
         cd Sitthida/HolidayTravelVehicles 
         javac -d . *.java
       # Compile java file from directory
+    - name: Run Main Class
+      run: |
+        cd Sitthida/HolidayTravelVehicles
+        java Main
       
