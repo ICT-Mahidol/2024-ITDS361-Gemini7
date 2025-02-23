@@ -28,5 +28,5 @@ jobs:
       # Compile java file from directory
     - name: Run Main Class
       run: |
-        cd Sitthida/HolidayTravelVehicles
+        cd Supisara/HolidayTravelVehicles
         java Main
