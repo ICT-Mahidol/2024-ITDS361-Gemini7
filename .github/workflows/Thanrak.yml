@@ -3,7 +3,7 @@ name: Java CI
 on:
   push:
     branches:
-      - meen
+      - Thanrak
 
 jobs:
   build:
@@ -14,15 +14,19 @@ jobs:
       uses: actions/checkout@v3
       with:
         ref: ${{ github.event.pull_request.head.ref }}
-        fetch-depth: ${{ env.PR_FETCH_DEPTH }}
+        fetch-depth: 0
 
     - name: Set up JDK
       uses: actions/setup-java@v1
       with:
-        java-version: '11' # You can change this to the version you want
+        java-version: '11'
 
     - name: Compile Java
       run: |
-        cd [Your Branch]/HolidayTravelVehicles 
-        javac -d . *.java
-      # Compile java file from directory
+        cd Thanrak/HolidayTravelVehicles
+        javac Main.java
+
+    - name: Run Main Class
+      run: |
+        cd Thanrak/HolidayTravelVehicles
+        java Main
