@@ -23,11 +23,11 @@ jobs:
 
     - name: Compile Java
       run: |
-        cd Thanrak/HolidayTravelVehicles 
+        cd /HolidayTravelVehicles 
         javac -d . *.java
       # Compile java file from directory
     - name: Run Main Class
       run: |
-        cd Thanrak/HolidayTravelVehicles
+        cd /HolidayTravelVehicles
         java Main
 
