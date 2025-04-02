@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Login page</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="login-form">
+  <h1>Login</h1>
+  <div class="login-top">
+    <form name="myForm" method="post" action="/login" th:object="${loginRequest}">
+
+      <div class="login-ic">
+        <span>
+          <img src="/images/icon-username.png" alt="">
+        </span>
+        <input type="text" name="name" placeholder="Name" required>
+      </div>
+
+      <div class="clear"></div>
+
+      <div class="login-ic">
+        <span>
+          <img src="/images/icon-password.png" alt="">
+        </span>
+        <input type="password" name="password" placeholder="Password" required>
+      </div>
+
+      <div class="clear"></div>
+
+      <div class="log-btn">
+        <input type="submit" name="login" value="Login">
+      </div>
+      <div class="signup-link">
+        Don't have an account? <a href="/signup">Signup</a>
+      </div>
+
+    </form>
+    <div class="error-message" th:if="${errorMessage}" th:text="${errorMessage}"></div>
+  </div>
+</div>
+</body>
+</html>
