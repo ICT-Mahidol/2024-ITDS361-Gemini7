@@ -1,7 +1,7 @@
 # Gemini Project Analysis of 3 selected use cases
 ---
 # Class Diagram
-![Class Diagram]()
+![Class Diagram](https://github.com/ICT-Mahidol/2024-ITDS361-Gemini7/blob/master/Gemini-7/design%20diagrams/classDiagram.png)
 ---
 # 1. Create a science plan 
 
@@ -77,10 +77,10 @@ Astronomer จะต้อง Login เข้าระบบเรียบร�
 | **5a** | The astronomer can proceed without simulation.                                                     |
 
 ## Activity Diagram
-![Create a science plan  Activity Diagram]()
+![Create a science plan  Activity Diagram](https://github.com/ICT-Mahidol/2024-ITDS361-Gemini7/blob/master/Gemini-7/design%20diagrams/activityDiagramsCreateSciencePlan.png)
 
 ## Sequence Diagram
-![Create a science plan  Sequence Diagram]()
+![Create a science plan  Sequence Diagram](https://github.com/ICT-Mahidol/2024-ITDS361-Gemini7/blob/master/Gemini-7/design%20diagrams/sequenceDiagramsCreateSciencePlan.png)
 
 
 ---
@@ -146,10 +146,10 @@ Astronomer ต้องเข้าสู่ระบบก่อน
 | **5a** | หากมี test case ใดล้มเหลว ระบบจะแสดงชื่อของ test case ที่ไม่ผ่าน                                                   |
 
 ## Activity Diagram
-![Test a science plan Activity Diagram]()
+![Test a science plan Activity Diagram](https://github.com/ICT-Mahidol/2024-ITDS361-Gemini7/blob/master/Gemini-7/design%20diagrams/activityDiagramsTestSciencePlan.png)
 
 ## Sequence Diagram
-![Test a science plan Sequence Diagram]()
+![Test a science plan Sequence Diagram](https://github.com/ICT-Mahidol/2024-ITDS361-Gemini7/blob/master/Gemini-7/design%20diagrams/sequenceDiagramsTestSciencePlan.png)
 
 
 ---
@@ -217,8 +217,8 @@ Astronomer จะต้อง Login เข้าระบบเรียบร�
 | **COMPLETE** | แผนดําเนินการเสร็จสมบูรณ|
 | **CANCELLED** | แผนถูกยกเลิก|
 ## Activity Diagram
-![Submit a science plan Activity Diagram]()
+![Submit a science plan Activity Diagram](https://github.com/ICT-Mahidol/2024-ITDS361-Gemini7/blob/master/Gemini-7/design%20diagrams/activityDiagramsSubmitSciencePlan.png)
 
 ## Sequence Diagram
-![Submit a science plan Sequence Diagram]()
+![Submit a science plan Sequence Diagram](https://github.com/ICT-Mahidol/2024-ITDS361-Gemini7/blob/master/Gemini-7/design%20diagrams/sequenceDiagramsSubmitSciencePlan.png)
 ---
