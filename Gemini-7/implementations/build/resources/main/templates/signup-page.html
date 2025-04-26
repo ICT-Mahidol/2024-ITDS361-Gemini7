@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Signup page</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="signup-form">
+    <h1>Signup</h1>
+    <div class="signup-top">
+        <form name="myForm" method="post" action="/signup" th:object="${signupRequest}">
+            <!-- Username -->
+            <div class="signup-ic">
+                <span><img src="/images/icon-username.png" alt="Username Icon"></span>
+                <input type="text" name="username" placeholder="Username" required>
+            </div>
+
+            <!-- Name -->
+            <div class="signup-ic">
+                <span><img src="/images/icon-username.png" alt=""></span>
+                <input type="text" name="name" placeholder="Name" required>
+            </div>
+
+            <!-- Surname -->
+            <div class="signup-ic">
+                <span><img src="/images/icon-username.png" alt="Surname Icon"></span>
+                <input type="text" name="surname" placeholder="Last Name" required>
+            </div>
+
+            <!-- Email -->
+            <div class="signup-ic">
+                <span><img src="/images/icon-email.png" alt=""></span>
+                <input type="email" name="email" placeholder="Email" required>
+            </div>
+
+            <div class="clear"></div>
+
+            <!-- Password -->
+            <div class="signup-ic">
+                <span><img src="/images/icon-password.png" alt=""></span>
+                <input type="password" name="password" placeholder="Password" required>
+            </div>
+
+            <div class="clear"></div>
+
+            <!-- Role -->
+            <div class="signup-ic">
+                <span><img src="/images/icon-role.png" alt="Role Icon"></span>
+                <select name="role" required>
+                    <option value="" disabled selected>Select Role</option>
+                    <option value="astronomer">Astronomer</option>
+                    <option value="scienceObserver ">Science observer</option>
+                    <option value="operationStaff">Operation Staff</option>
+                    <option value="visitor">Visitor</option>
+                    <option value="supporter">Supporter</option>
+                </select>
+            </div>
+
+            <div class="log-btn">
+                <input type="submit" name="signup" value="Signup">
+            </div>
+
+            <div class="login-link">
+                Already have an account? <a href="/login">Login</a>
+            </div>
+
+        </form>
+        <div class="error-message" th:if="${errorMessage}" th:text="${errorMessage}"></div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,221 @@
+body {
+    position: relative;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 100%;
+    background: url("../images/space.jpg");
+    background-size: cover;
+    cursor: zoom-in;
+    padding: 0px;
+    margin: auto;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+}
+
+.heading {
+    padding: 100px 0px 50px 0px;
+    font-size: 2em;
+    font-wieght: 800;
+    color: #fff;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 2em;
+}
+
+.main-btn-group {
+    text-align: center;
+    margin-top: 2em;
+}
+
+.main-btn {
+    display: inline-block;
+    padding: 18px 50px;
+    margin: 10px;
+    background-color: #ff8f33;
+    color: #fff;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 8px;
+    border: 2px solid #ff8f33;
+    transition: 0.3s ease;
+    text-transform: uppercase;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.main-btn:hover {
+    background-color: transparent;
+    color: #fff;
+    border: 2px solid #fff;
+}
+
+
+.login-form, .signup-form, .create-form {
+    padding: 100px 0px 50px 0px;
+}
+
+.login-form h1, .signup-form h1, .create-form h1 {
+    font-size: 2em;
+    font-wieght: 800;
+    color: #fff;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 2em;
+}
+
+.login-top, .signup-top {
+    width: 460px;
+    display: block;
+    margin: 0 auto;
+
+}
+.create-top{
+    width: 750px;
+    display: block;
+    margin: 0 auto;
+
+}
+
+form {
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+    font: inherit;
+    vertical-align: baseline;
+}
+.row {
+    display: flex;
+    gap: 20px;
+}
+.column {
+    flex: 1;
+}
+.login-ic, .signup-ic, .create-ic {
+    background-color: rgba(255, 255, 255, 0.32) ;
+    margin-bottom: 1.5em;
+    padding: 8px;
+}
+.create-ic {
+    display: flex;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.32);
+    padding: 8px;
+    margin-bottom: 1.5em;
+}
+.create-ic label {
+    width: 30%;
+    color: #fff;
+}
+.login-ic span img, .signup-ic span img {
+    width: 38px;
+    height: 38px;
+    width: 38px;
+    height: 38px;
+    float: left;
+    display: inline-block;
+}
+
+.login-top input[type="text"], .login-top input[type="password"], .login-top input[type="email"],
+.signup-top input[type="text"], .signup-top input[type="password"], .signup-top input[type="email"], .signup-top select,
+.create-top input[type="text"], .create-top input[type="number"], .create-top input[type="date"], .create-top textarea, .create-top select {
+    /*float: left;*/
+    background: none;
+    outline: none;
+    border: none;
+    font-size: 15px;
+    font-weight: 400;
+    color: #fff;
+    padding: 10px 16px;
+    border-left: 1px solid #fff;
+    border-left-width: medium;
+    width: 82%;
+    display: inline-block;
+    margin-left: 6px;
+}
+
+.signup-top select option, .create-top select option {
+    font-family: 'Montserrat', sans-serif;
+    color: #000;
+    background-color: #fff;
+}
+
+.login-top input::placeholder, .signup-top input::placeholder, .create-top input::placeholder{
+    color: #d2d2d2;
+    opacity: 1;
+}
+.create-top input[type="date"], .create-top input::placeholder, .create-top textarea::placeholder, .create-top select {
+    color: #000;
+    opacity: 1;
+}
+.clear {
+    clear: both;
+}
+
+.log-btn, .save-btn {
+    text-align: center;
+    padding: 0;
+    margin: 0;
+}
+
+.log-btn input[type="submit"], .save-btn input[type="submit"]{
+    font-size: 15px;
+    font-weight: 700;
+    color: #fff;
+    padding: 13px 0;
+    background: #ff8f33;
+    display: inline-block;
+    width: 100%;
+    outline:none;
+    border:2px solid #ff8f33;
+    cursor:pointer;
+    text-transform:uppercase;
+}
+
+.log-btn input[type="submit"]:hover, .save-btn input[type="submit"]:hover{
+    transition: all 0.3s ease;
+    border: 2px solid #fff;
+}
+
+p {
+    text-align: center;
+    font-size: 15px;
+    color: #fff;
+    font-weight: 400;
+}
+
+.signup-link, .login-link{
+    margin-top: 1em;
+    text-align: center;
+    font-size: 14px;
+    color: #fff;
+    font-weight: 400;
+}
+
+.signup-link a , .login-link a{
+    color: #ffcc99;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.signup-link a:hover , .login-link a:hover{
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+.error-message {
+    margin-top: 1em;
+    text-align: center;
+    font-size: 14px;
+    color: #ff4d4d;
+    font-weight: bold;
+}
+

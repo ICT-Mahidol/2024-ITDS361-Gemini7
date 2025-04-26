@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home page</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="heading">
+    <h1>Welcome to Gemini Observatory <span th:text="${loginUser}"></span></h1>
+</div>
+<div class="main-btn-group">
+    <a href="/create" class="main-btn">Create Science Plan</a>
+    <a href="/submit" class="main-btn">Submit Science Plan</a>
+    <a href="/test" class="main-btn">Test Science Plan</a>
+</div>
+</body>
+</html>
