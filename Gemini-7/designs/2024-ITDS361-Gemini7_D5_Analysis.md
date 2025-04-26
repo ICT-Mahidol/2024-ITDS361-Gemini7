@@ -1,7 +1,7 @@
 # Gemini Project Analysis of 3 selected use cases
 ---
 # Class Diagram
-![Class Diagram](https://github.com/ICT-Mahidol/2024-ITDS361-Gemini7/blob/master/Gemini-7/design%20diagrams/classDiagram.png)
+![Class Diagram](https://github.com/ICT-Mahidol/2024-ITDS361-Gemini7/blob/master/Gemini-7/designs/design%20diagrams/classDiagram.png)
 ---
 # 1. Create a science plan 
 
@@ -77,10 +77,10 @@ Astronomer จะต้อง Login เข้าระบบเรียบร�
 | **5a** | หากข้อมูลที่ป้อนเข้ากันไม่ได้กับระบบ OCS รุ่นเก่า (เช่น รูปแบบไฟล์ไม่ถูกต้อง ค่าที่ไม่รองรับ หรือข้อมูลที่จําเป็นขาดหายไป) ระบบจะแสดงข้อความข้อผิดพลาดว่า: “Input data is not compatible with the legacy OCS system.”                                                   |
 
 ## Activity Diagram
-![Create a science plan  Activity Diagram](https://github.com/ICT-Mahidol/2024-ITDS361-Gemini7/blob/master/Gemini-7/design%20diagrams/activityDiagramsCreateSciencePlan.png)
+![Create a science plan  Activity Diagram](https://github.com/ICT-Mahidol/2024-ITDS361-Gemini7/blob/master/Gemini-7/designs/design%20diagrams/activityDiagramsCreateSciencePlan.png)
 
 ## Sequence Diagram
-![Create a science plan  Sequence Diagram](https://github.com/ICT-Mahidol/2024-ITDS361-Gemini7/blob/master/Gemini-7/design%20diagrams/sequenceDiagramsCreateSciencePlan.png)
+![Create a science plan  Sequence Diagram](https://github.com/ICT-Mahidol/2024-ITDS361-Gemini7/blob/master/Gemini-7/designs/design%20diagrams/sequenceDiagramsCreateSciencePlan.png)
 
 
 ---
@@ -146,10 +146,10 @@ Astronomer ต้องเข้าสู่ระบบก่อน
 | **5a** | หากมี test case ใดล้มเหลว ระบบจะแสดงชื่อของ test case ที่ไม่ผ่าน                                                   |
 
 ## Activity Diagram
-![Test a science plan Activity Diagram](https://github.com/ICT-Mahidol/2024-ITDS361-Gemini7/blob/master/Gemini-7/design%20diagrams/activityDiagramsTestSciencePlan.png)
+![Test a science plan Activity Diagram](https://github.com/ICT-Mahidol/2024-ITDS361-Gemini7/blob/master/Gemini-7/designs/design%20diagrams/activityDiagramsTestSciencePlan.png)
 
 ## Sequence Diagram
-![Test a science plan Sequence Diagram](https://github.com/ICT-Mahidol/2024-ITDS361-Gemini7/blob/master/Gemini-7/design%20diagrams/sequenceDiagramsTestSciencePlan.png)
+![Test a science plan Sequence Diagram](https://github.com/ICT-Mahidol/2024-ITDS361-Gemini7/blob/master/Gemini-7/designs/design%20diagrams/sequenceDiagramsTestSciencePlan.png)
 
 
 ---
@@ -217,8 +217,8 @@ Astronomer จะต้อง Login เข้าระบบเรียบร�
 | **COMPLETE** | แผนดําเนินการเสร็จสมบูรณ์|
 | **CANCELLED** | แผนถูกยกเลิก|
 ## Activity Diagram
-![Submit a science plan Activity Diagram](https://github.com/ICT-Mahidol/2024-ITDS361-Gemini7/blob/master/Gemini-7/design%20diagrams/activityDiagramsSubmitSciencePlan.png)
+![Submit a science plan Activity Diagram](https://github.com/ICT-Mahidol/2024-ITDS361-Gemini7/blob/master/Gemini-7/designs/design%20diagrams/activityDiagramsSubmitSciencePlan.png)
 
 ## Sequence Diagram
-![Submit a science plan Sequence Diagram](https://github.com/ICT-Mahidol/2024-ITDS361-Gemini7/blob/master/Gemini-7/design%20diagrams/sequenceDiagramsSubmitSciencePlan.png)
+![Submit a science plan Sequence Diagram](https://github.com/ICT-Mahidol/2024-ITDS361-Gemini7/blob/master/Gemini-7/designs/design%20diagrams/sequenceDiagramsSubmitSciencePlan.png)
 ---
