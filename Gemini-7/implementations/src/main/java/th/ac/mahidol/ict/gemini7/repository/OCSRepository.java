@@ -1,11 +1,8 @@
 package th.ac.mahidol.ict.gemini7.repository;
 
-import edu.gemini.app.ocs.model.SciencePlan;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import th.ac.mahidol.ict.gemini7.model.SciencePlan;
 
-@Repository
 public interface OCSRepository extends JpaRepository<SciencePlan, Long> {
-    String saveSciencePlan(SciencePlan ocsPlan);
-    // สามารถเพิ่ม query method ตามต้องการในอนาคต เช่น findByStatus, findByCreator, etc.
+    // สามารถไม่ต้องเขียน save() เพราะ JpaRepository มีให้อยู่แล้ว
 }

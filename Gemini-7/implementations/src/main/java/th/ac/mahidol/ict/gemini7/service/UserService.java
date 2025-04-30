@@ -10,27 +10,32 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public User signupUser(String name, String password, String email){
-        boolean emailExists = userRepository.findByEmail(email).isPresent();
-        boolean nameExists = userRepository.findByName(name).isPresent();
+    public User signupUser(String username, String name, String surname, String email, String password, String role) {
 
+        boolean usernameExists = userRepository.findByUsername(username).isPresent();
+        boolean emailExists = userRepository.findByEmail(email).isPresent();
+
+        System.out.println("Username exists: " + usernameExists);
         System.out.println("Email exists: " + emailExists);
-        System.out.println("Name exists: " + nameExists);
-        if(name.isEmpty() || password.isEmpty() || email.isEmpty() || userRepository.findByName(name).isPresent() || userRepository.findByEmail(email).isPresent()){
+
+        if(username.isEmpty() || name.isEmpty() || surname.isEmpty() || password.isEmpty() || email.isEmpty() || role.isEmpty() || userRepository.findByUsername(username).isPresent() || userRepository.findByEmail(email).isPresent()){
             return null;
         } else {
             User user = new User();
+            user.setUsername(username);
             user.setName(name);
+            user.setSurname(surname);
             user.setPassword(password);
             user.setEmail(email);
+            user.setRole(role);
             User savedUser = userRepository.save(user);
             System.out.println("Saved user: " + savedUser);
             return savedUser;
         }
     }
 
-    public User loginUser(String name, String password){
-        System.out.println("Checking login for: " + name + ", " + password);
-        return userRepository.findByNameAndPassword(name, password).orElse(null);
+    public User loginUser(String username, String password){
+        System.out.println("Checking login for: " + username + ", " + password);
+        return userRepository.findByUsernameAndPassword(username, password).orElse(null);
     }
 }

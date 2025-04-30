@@ -58,11 +58,11 @@ body::before {
 }
 
 
-.login-form, .signup-form, .create-form {
+.login-form, .signup-form, .create-form, .test-form {
     padding: 100px 0px 50px 0px;
 }
 
-.login-form h1, .signup-form h1, .create-form h1 {
+.login-form h1, .signup-form h1, .create-form h1, .test-form h1, .filter-form h1 {
     font-size: 2em;
     font-wieght: 800;
     color: #fff;
@@ -71,7 +71,7 @@ body::before {
     margin-bottom: 2em;
 }
 
-.login-top, .signup-top {
+.login-top, .signup-top, .test-top {
     width: 460px;
     display: block;
     margin: 0 auto;
@@ -98,7 +98,7 @@ form {
 .column {
     flex: 1;
 }
-.login-ic, .signup-ic, .create-ic {
+.login-ic, .signup-ic, .create-ic, .test-ic {
     background-color: rgba(255, 255, 255, 0.32) ;
     margin-bottom: 1.5em;
     padding: 8px;
@@ -110,7 +110,7 @@ form {
     padding: 8px;
     margin-bottom: 1.5em;
 }
-.create-ic label {
+.create-ic label, .test-ic label {
     width: 30%;
     color: #fff;
 }
@@ -210,6 +210,168 @@ p {
     color: #ffffff;
     text-decoration: underline;
 }
+
+/*TEST STYLE*/
+.plan-box {
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin: 100px auto;
+    border-radius: 8px;
+    background-color: #fafafa;
+    width: 50%;
+}
+
+.plan-box p {
+    text-align: left;
+    margin: 0 0 10px;
+    color: #000000;
+}
+
+.plan-box form {
+    text-align: right;
+}
+
+.plan-box button {
+    background-color: #ff8f33;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: 0.3s ease;
+}
+
+.plan-box button:hover {
+    background-color: #ffcc99;
+    color: #000000;
+}
+
+.test-result {
+    background-color: #e8f6ec;
+    border-left: 5px solid #2ecc71;
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 8px;
+}
+
+.test-result ul {
+    padding-left: 20px;
+}
+
+/*SUBMIT STYLE*/
+/* ฟอร์มกรองสถานะ */
+.filter-form form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.filter-form select,
+.filter-form button {
+    padding: 8px 12px;
+    font-size: 14px;
+}
+
+.filter-form button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.filter-form button:hover {
+    background-color: #2980b9;
+}
+
+/* กล่องแสดง plan */
+.plan-box {
+    background-color: white;
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.plan-box p {
+    margin: 5px 0;
+}
+
+.confirm-btn {
+    background-color: #2ecc71;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background 0.3s;
+}
+
+.confirm-btn:hover {
+    background-color: #27ae60;
+}
+
+/* ข้อความเมื่อไม่มีแผน */
+.error-message {
+    text-align: center;
+    color: #e74c3c;
+    margin-top: 20px;
+}
+
+/* Modal ยืนยันการส่ง */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 30px;
+    border-radius: 10px;
+    width: 400px;
+    text-align: center;
+}
+
+.modal-content h2 {
+    margin-bottom: 20px;
+}
+
+.modal-content button {
+    margin: 0 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+#confirm-btn {
+    background-color: #2ecc71;
+    color: white;
+}
+
+#cancel-btn {
+    background-color: #e74c3c;
+    color: white;
+}
+
+
 
 .error-message {
     margin-top: 1em;

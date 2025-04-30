@@ -7,12 +7,12 @@
 </head>
 <body>
 <div class="heading">
-    <h1>Welcome to Gemini Observatory <span th:text="${loginUser}"></span></h1>
+    <h1>Welcome <span th:text="${loginUser}"></span>'s to Gemini Observatory </h1>
 </div>
 <div class="main-btn-group">
-    <a href="/create" class="main-btn">Create Science Plan</a>
-    <a href="/submit" class="main-btn">Submit Science Plan</a>
-    <a href="/test" class="main-btn">Test Science Plan</a>
+    <a href="/science-plan/create" class="main-btn">Create Science Plan</a>
+    <a href="/science-plan/test" class="main-btn">Test Science Plan</a>
+    <a href="/science-plan/submit" class="main-btn">Submit Science Plan</a>
 </div>
 </body>
 </html>

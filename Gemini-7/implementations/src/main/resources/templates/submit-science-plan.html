@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Submit Science Plan</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<div class="filter-form">
+    <h1>Available Science Plans</h1>
+
+    <!-- Dropdown for selecting status filter -->
+    <form th:action="@{/science-plan/submit}" method="get">
+    <label for="status">Filter by Status:</label>
+        <select name="status" id="status">
+            <option value="ALL" th:selected="${status == 'ALL'}">All</option>
+            <option value="CREATED" th:selected="${status == 'CREATED'}">Created</option>
+            <option value="TESTED" th:selected="${status == 'TESTED'}">Tested</option>
+            <option value="SUBMITTED" th:selected="${status == 'SUBMITTED'}">Submitted</option>
+            <option value="VALIDATED" th:selected="${status == 'VALIDATED'}">Validated</option>
+            <option value="RUNNING" th:selected="${status == 'RUNNING'}">Running</option>
+            <option value="INVALIDATED" th:selected="${status == 'INVALIDATED'}">Invalidated</option>
+            <option value="COMPLETE" th:selected="${status == 'COMPLETE'}">Complete</option>
+            <option value="CANCELLED" th:selected="${status == 'CANCELLED'}">Cancelled</option>
+        </select>
+        <button type="submit">Filter</button>
+    </form>
+
+    <div th:if="${noPlans}" class="error-message">
+        <div class="main-btn-group">
+            <a href="/science-plan/create" class="main-btn">Create Science Plan</a>
+        </div>
+    </div>
+
+
+    <!-- Loop through plans and display them -->
+    <div th:each="plan : ${plans}" class="plan-box">
+        <p><strong>Plan ID: </strong> <span th:text="${plan.planID}"></span></p>
+        <p><strong>Plan Name: </strong> <span th:text="${plan.planName}"></span></p>
+        <p><strong>Creator: </strong> <span th:text="${plan.creator}"></span></p>
+        <p><strong>Objective: </strong> <span th:text="${plan.objective}"></span></p>
+        <p><strong>Start Date: </strong> <span th:text="${plan.startDate}"></span></p>
+        <p><strong>End Date: </strong> <span th:text="${plan.endDate}"></span></p>
+        <p><strong>Status: </strong> <span th:text="${plan.status}"></span></p>
+
+        <!-- ปุ่มที่เรียก modal -->
+        <button type="button" class="submit-btn" th:data-id="${plan.planID}" th:data-status="${plan.status}">Submit</button>
+
+        <!-- ฟอร์มที่ซ่อนไว้ -->
+        <form th:action="@{/science-plan/submit/{planId}(planId=${plan.planID})}" method="post" th:id="'form-' + ${plan.planID}" style="display: none;">
+            <input type="hidden" name="planId" th:value="${plan.planID}" />
+        </form>
+
+    </div>
+</div>
+
+<!-- Confirmation Dialog -->
+<div id="confirmation-dialog" class="modal">
+    <div class="modal-content">
+        <h2>Confirm Submission</h2>
+        <p>Are you sure you want to submit this Science Plan?</p>
+        <button id="confirm-btn">Confirm</button>
+        <button id="cancel-btn">Cancel</button>
+    </div>
+</div>
+
+<script>
+    const submitButtons = document.querySelectorAll('.submit-btn');
+    const confirmationDialog = document.getElementById('confirmation-dialog');
+    const confirmBtn = document.getElementById('confirm-btn');
+    const cancelBtn = document.getElementById('cancel-btn');
+    let selectedPlanId = null;
+    let selectedPlanStatus = null;
+
+    submitButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            selectedPlanId = this.getAttribute('data-id');
+            selectedPlanStatus = this.getAttribute('data-status');
+            confirmationDialog.style.display = 'block';
+        });
+    });
+
+    confirmBtn.addEventListener('click', function() {
+        confirmationDialog.style.display = 'none'; // ปิด Modal
+
+        if (selectedPlanStatus === "CREATED") {
+            // แสดงข้อความแจ้งเตือน
+            const toast = document.getElementById('toast');
+            toast.style.display = 'block';
+
+            // ซ่อนหลัง 2 วินาที แล้ว redirect
+            setTimeout(() => {
+                toast.style.display = 'none';
+                window.location.href = '/science-plan/test';
+            }, 2000);
+        } else {
+            const form = document.getElementById('form-' + selectedPlanId);
+            if (form) {
+                form.submit();
+            }
+        }
+    });
+    cancelBtn.addEventListener('click', function() {
+        selectedPlanId = null;
+        confirmationDialog.style.display = 'none'; // ปิด Modal
+    });
+    // ตั้งเวลาให้ alert หายไปหลัง 3 วินาที
+    // Auto-hide toast after 2 seconds
+    window.addEventListener('DOMContentLoaded', () => {
+        const toast = document.getElementById('toast');
+        if (toast) {
+            setTimeout(() => {
+                toast.style.display = 'none';
+            }, 5000);
+        }
+    });
+
+
+</script>
+
+<div id="toast" class="toast" style="display: none; position: fixed; top: 20px; right: 20px; background-color: #f8d7da; color: #721c24; padding: 12px 20px; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.2); z-index: 1000;">
+    You must test the Science Plan before submission.
+</div>
+
+
+</body>
+</html>

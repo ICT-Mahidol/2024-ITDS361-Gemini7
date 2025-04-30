@@ -1,8 +1,13 @@
 package th.ac.mahidol.ict.gemini7.model.User;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.Objects;
 
+@Setter
+@Getter
 @Entity
 @Table(name = "users")
 public class User {
@@ -18,51 +23,6 @@ public class User {
     private String email;
     private String role;
 
-    public int getId() {
-        return id;
-    }
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getName() {
-        return name;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getSurname() {
-        return surname;
-    }
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getEmail() { return email; }
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getRole() { return role; }
-    public void setRole(String role) {
-        this.role = role;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
@@ -72,7 +32,7 @@ public class User {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, password, email);
+        return Objects.hash(id, username, name, surname, password, email, role);
     }
 
     @Override

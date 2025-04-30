@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Test Science Plan</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+<div class="test-form">
+    <h1>Available Science Plans</h1>
+    <div th:if="${noPlans}" class="error-message">
+        No available science plans for testing.
+    </div>
+
+    <div th:each="plan : ${plans}" class="plan-box">
+        <p><strong>Plan ID: </strong> <span th:text="${plan.planID}"></span></p>
+        <p><strong>Plan Name: </strong> <span th:text="${plan.planName}"></span></p>
+        <p><strong>Creator: </strong> <span th:text="${plan.creator}"></span></p>
+        <p><strong>Objective: </strong> <span th:text="${plan.objective}"></span></p>
+        <p><strong>Start Date: </strong> <span th:text="${plan.startDate}"></span></p>
+        <p><strong>End Date: </strong> <span th:text="${plan.endDate}"></span></p>
+        <p><strong>Status: </strong> <span th:text="${plan.status}"></span></p>
+
+        <!-- ฟอร์มเพื่อส่งข้อมูล -->
+        <form th:action="@{/science-plan/test/{planId}(planId=${plan.planID})}" method="POST" onsubmit="return showTestDetails(event, '${plan.planID}', '${plan.planName}');">
+            <!-- ซ่อนข้อมูล planId -->
+            <input type="hidden" name="planId" th:value="${plan.planID}" />
+            <button type="submit" class="test-btn">Test</button>
+        </form>
+    </div>
+</div>
+<div class="main-btn-group">
+    <a href="/science-plan/create" class="main-btn">Create Science Plan</a>
+    <a href="/science-plan/submit" class="main-btn">Submit Science Plan</a>
+</div>
+<script>
+    function showTestDetails(event, planId, planName) {
+        // ป้องกันการส่งฟอร์มก่อน
+        // event.preventDefault();
+
+        const detailList = [
+            "✔ Star System Selection Test",
+            "✔ Image Processing Configuration Test",
+            "✔ Telescope Location Test",
+            "✔ Observation Duration Test"
+        ];
+
+        // สร้างข้อความที่จะโชว์ใน alert
+        let alertMessage = `Plan ID: ${planId}\nPlan Name: ${planName}\n\nTest Details:\n`;
+
+        detailList.forEach(detail => {
+            alertMessage += detail + '\n';
+        });
+
+        // แสดง alert
+        alert(alertMessage);
+
+        // หลังจากปิด alert, ส่งฟอร์ม
+        // event.target.submit();
+
+        // เปลี่ยนหน้าไปที่ /science-plan/test
+        // window.location.href = "/science-plan/test";
+    }
+</script>
+
+</body>
+</html>
