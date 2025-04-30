@@ -43,13 +43,16 @@
 
     <!-- Loop through plans and display them -->
     <div th:each="plan : ${plans}" class="plan-box">
-        <p><strong>Plan ID: </strong> <span th:text="${plan.planID}"></span></p>
-        <p><strong>Plan Name: </strong> <span th:text="${plan.planName}"></span></p>
-        <p><strong>Creator: </strong> <span th:text="${plan.creator}"></span></p>
-        <p><strong>Objective: </strong> <span th:text="${plan.objective}"></span></p>
-        <p><strong>Start Date: </strong> <span th:text="${plan.startDate}"></span></p>
-        <p><strong>End Date: </strong> <span th:text="${plan.endDate}"></span></p>
-        <p><strong>Status: </strong> <span th:text="${plan.status}"></span></p>
+        <p><strong>Plan ID:</strong> <span th:text="${plan.planID}"></span></p>
+        <p><strong>Plan Name:</strong> <span th:text="${plan.planName}"></span></p>
+        <p><strong>Creator:</strong> <span th:text="${plan.creator}"></span></p>
+        <p><strong>Submitter:</strong> <span th:text="${plan.submitter}"></span></p>
+        <p><strong>Objective:</strong> <span th:text="${plan.objective}"></span></p>
+        <p><strong>Star System:</strong> <span th:text="${plan.starSystem}"></span></p>
+        <p><strong>Telescope Location:</strong> <span th:text="${plan.telescopeLocation}"></span></p>
+        <p><strong>Start Date:</strong> <span th:text="${plan.startDate}"></span></p>
+        <p><strong>End Date:</strong> <span th:text="${plan.endDate}"></span></p>
+        <p><strong>Status:</strong> <span th:text="${plan.status}"></span></p>
 
         <div class="plan-actions">
             <button type="button" class="submit-btn" th:data-id="${plan.planID}" th:data-status="${plan.status}">Submit</button>

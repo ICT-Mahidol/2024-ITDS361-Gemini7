@@ -163,7 +163,7 @@ public class SciencePlanController {
 
     // Handle plan submission
     @PostMapping("/submit/{planId}")
-    public String submitPlan(@PathVariable Long planId, RedirectAttributes redirectAttributes) {
+    public String submitPlan(@PathVariable Long planId, RedirectAttributes redirectAttributes, HttpSession session) {
         SciencePlan plan = facade.getSciencePlanById(planId);
 
         if ("CREATED".equals(plan.getStatus())) {
@@ -172,7 +172,9 @@ public class SciencePlanController {
         }
 
         if ("TESTED".equals(plan.getStatus())) {
+            String username = (String) session.getAttribute("username");
             plan.setStatus("SUBMITTED");
+            plan.setSubmitter(username);
             facade.saveSciencePlan(plan);
             redirectAttributes.addFlashAttribute("successMessage", "Plan SUBMITTED successfully!");
         } else {
