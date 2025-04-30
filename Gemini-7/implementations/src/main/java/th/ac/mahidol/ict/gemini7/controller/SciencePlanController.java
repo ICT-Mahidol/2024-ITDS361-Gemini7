@@ -66,8 +66,8 @@ public class SciencePlanController {
         try {
             SciencePlan plan = facade.getSciencePlanById(planId);
             if (plan == null) {
-                redirectAttributes.addFlashAttribute("errorMessage", "Your selected science plan does not exist.");
-                return "redirect:/science-plan/test";
+//                redirectAttributes.addFlashAttribute("errorMessage", "Your selected science plan does not exist.");
+//                return "redirect:/science-plan/test";
             }
 
             Map<String, Boolean> testResults = performAllTests(plan);
@@ -167,16 +167,16 @@ public class SciencePlanController {
         SciencePlan plan = facade.getSciencePlanById(planId);
 
         if ("CREATED".equals(plan.getStatus())) {
-            redirectAttributes.addFlashAttribute("error", "You must test the Science Plan before submission.");
+            redirectAttributes.addFlashAttribute("errorMessage", "You must test the Science Plan before submission.");
             return "redirect:/science-plan/test";
         }
 
         if ("TESTED".equals(plan.getStatus())) {
             plan.setStatus("SUBMITTED");
             facade.saveSciencePlan(plan);
-            redirectAttributes.addFlashAttribute("success", "Plan SUBMITTED successfully!");
+            redirectAttributes.addFlashAttribute("successMessage", "Plan SUBMITTED successfully!");
         } else {
-            redirectAttributes.addFlashAttribute("error", "Only TESTED plans can be SUBMITTED.");
+            redirectAttributes.addFlashAttribute("errorMessage", "Only TESTED plans can be SUBMITTED.");
         }
 
         return "redirect:/science-plan/submit";

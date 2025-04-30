@@ -19,6 +19,24 @@ body::before {
     background-color: rgba(0, 0, 0, 0.5);
     z-index: -1;
 }
+.home-button {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background-color: #ff8f33;
+    color: #fff;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    z-index: 1000;
+}
+
+.home-button:hover {
+    background-color: transparent;
+    border: 2px solid #fff;
+}
 
 .heading {
     padding: 100px 0px 50px 0px;
@@ -58,7 +76,7 @@ body::before {
 }
 
 
-.login-form, .signup-form, .create-form, .test-form {
+.login-form, .signup-form, .create-form, .test-form, .filter-form {
     padding: 100px 0px 50px 0px;
 }
 
@@ -71,7 +89,7 @@ body::before {
     margin-bottom: 2em;
 }
 
-.login-top, .signup-top, .test-top {
+.login-top, .signup-top {
     width: 460px;
     display: block;
     margin: 0 auto;
@@ -98,7 +116,7 @@ form {
 .column {
     flex: 1;
 }
-.login-ic, .signup-ic, .create-ic, .test-ic {
+.login-ic, .signup-ic, .create-ic {
     background-color: rgba(255, 255, 255, 0.32) ;
     margin-bottom: 1.5em;
     padding: 8px;
@@ -110,7 +128,7 @@ form {
     padding: 8px;
     margin-bottom: 1.5em;
 }
-.create-ic label, .test-ic label {
+.create-ic label {
     width: 30%;
     color: #fff;
 }
@@ -152,7 +170,7 @@ form {
     opacity: 1;
 }
 .create-top input[type="date"], .create-top input::placeholder, .create-top textarea::placeholder, .create-top select {
-    color: #000;
+    color: #d2d2d2;
     opacity: 1;
 }
 .clear {
@@ -211,122 +229,183 @@ p {
     text-decoration: underline;
 }
 
-/*TEST STYLE*/
+/* TEST RESULT LIST */
+.test-form ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.test-form li {
+    margin: 10px 0;
+    font-size: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.passed {
+    color: #27ae60;
+    font-weight: bold;
+}
+
+.failed {
+    color: #c0392b;
+    font-weight: bold;
+}
+
+/* FINISH BUTTON */
+.test-form .main-btn {
+    display: block;
+    margin: 30px auto 0;
+    padding: 10px 20px;
+    background-color: #2ecc71;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: background 0.3s ease;
+}
+
+.test-form .main-btn:hover {
+    background-color: #18934c;
+}
+
+/* PLAN BOX (LIST ITEMS) */
 .plan-box {
-    border: 1px solid #ccc;
-    padding: 15px;
-    margin: 100px auto;
-    border-radius: 8px;
-    background-color: #fafafa;
-    width: 50%;
+    background-color: rgba(255, 255, 255, 0.95);
+    border: 1px solid #ddd;
+    padding: 20px 30px;
+    margin: 20px auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    width: 30%;
+    transition: transform 0.3s ease;
+}
+
+.plan-box:hover {
+    transform: scale(1.01);
 }
 
 .plan-box p {
+    margin: 6px 0;
+    color: #000;
+    line-height: 1.5;
     text-align: left;
-    margin: 0 0 10px;
-    color: #000000;
 }
 
 .plan-box form {
     text-align: right;
+    margin-top: 10px;
 }
 
-.plan-box button {
+.plan-box button,
+.test-btn, .submit-btn{
     background-color: #ff8f33;
     color: white;
     border: none;
     padding: 8px 16px;
-    border-radius: 5px;
-    cursor: pointer;
+    border-radius: 6px;
     font-size: 14px;
     font-weight: bold;
+    cursor: pointer;
     text-transform: uppercase;
-    transition: 0.3s ease;
+    transition: background 0.3s ease;
 }
 
-.plan-box button:hover {
+.plan-box button:hover,
+.test-btn:hover ,.submit-btn:hover{
     background-color: #ffcc99;
     color: #000000;
 }
 
-.test-result {
-    background-color: #e8f6ec;
-    border-left: 5px solid #2ecc71;
-    padding: 15px;
-    margin-top: 20px;
-    border-radius: 8px;
+/* SUCCESS & ERROR MESSAGES */
+.success-message,
+.error-message {
+    font-size: 15px;
+    font-weight: bold;
+    padding: 12px 20px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    text-align: center;
 }
 
-.test-result ul {
-    padding-left: 20px;
+.test-results-box {
+    background-color: rgba(255, 255, 255, 0.75);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    width: 50%;
+    margin: 40px auto;
 }
 
-/*SUBMIT STYLE*/
-/* ฟอร์มกรองสถานะ */
+.test-results-box h3 {
+    text-align: center;
+    color: #2c3e50;
+    font-weight: 800;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.test-results-box ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.test-results-box li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 14px;
+    border-left: 6px solid #ccc;
+    margin-bottom: 12px;
+    background-color: #f8f8f8;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: 0.2s ease;
+}
+
+.test-results-box li.passed {
+    border-left-color: #2ecc71;
+}
+
+.test-results-box li.failed {
+    border-left-color: #e74c3c;
+}
+
+.test-label {
+    font-weight: 600;
+    color: #333;
+}
+
+.test-status {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* FILTER FORM */
+
 .filter-form form {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 15px;
-    margin-bottom: 20px;
+    gap: 10px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
 }
 
-.filter-form select,
-.filter-form button {
+.filter-form select {
     padding: 8px 12px;
     font-size: 14px;
-}
-
-.filter-form button {
-    background-color: #3498db;
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background 0.3s;
-}
-
-.filter-form button:hover {
-    background-color: #2980b9;
-}
-
-/* กล่องแสดง plan */
-.plan-box {
-    background-color: white;
-    border: 1px solid #ddd;
-    padding: 20px;
-    margin-bottom: 15px;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-}
-
-.plan-box p {
-    margin: 5px 0;
-}
-
-.confirm-btn {
-    background-color: #2ecc71;
-    color: white;
-    padding: 8px 16px;
-    border: none;
     border-radius: 6px;
-    cursor: pointer;
-    margin-top: 10px;
-    transition: background 0.3s;
+    border: 1px solid #ccc;
 }
 
-.confirm-btn:hover {
-    background-color: #27ae60;
-}
-
-/* ข้อความเมื่อไม่มีแผน */
-.error-message {
-    text-align: center;
-    color: #e74c3c;
-    margin-top: 20px;
-}
-
-/* Modal ยืนยันการส่ง */
+/* MODAL */
 .modal {
     display: none;
     position: fixed;
@@ -346,10 +425,12 @@ p {
     border-radius: 10px;
     width: 400px;
     text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
 }
 
 .modal-content h2 {
     margin-bottom: 20px;
+    color: #2c3e50;
 }
 
 .modal-content button {
@@ -359,6 +440,8 @@ p {
     border-radius: 6px;
     font-size: 14px;
     cursor: pointer;
+    text-transform: uppercase;
+    font-weight: bold;
 }
 
 #confirm-btn {
@@ -371,13 +454,78 @@ p {
     color: white;
 }
 
-
-
-.error-message {
-    margin-top: 1em;
-    text-align: center;
+/* TOAST */
+.toast {
+    display: none;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 12px 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    z-index: 1000;
     font-size: 14px;
-    color: #ff4d4d;
-    font-weight: bold;
+    font-weight: 500;
 }
 
+/*!* SUCCESS & ERROR MESSAGE *!*/
+/*.error-message {*/
+/*    font-size: 15px;*/
+/*    font-weight: bold;*/
+/*    padding: 12px 20px;*/
+/*    margin-bottom: 20px;*/
+/*    border-radius: 6px;*/
+/*    text-align: center;*/
+/*    background-color: rgba(255, 255, 255, 0.75);*/
+/*    border: 1px solid #e74c3c;*/
+/*    color: #e74c3c;*/
+/*}*/
+
+.plan-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 12px;
+}
+
+.test-btn,
+.submit-btn {
+    background-color: #ff8f33;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background 0.3s ease;
+}
+
+.test-btn:hover,
+.submit-btn:hover {
+    background-color: #ffcc99;
+    color: #000000;
+}
+
+.filter-form label {
+    color: #ffffff;
+}
+
+.success-message {
+    color: #2ecc71;
+    background-color: rgba(255, 255, 255, 0.75);
+    border: 1px solid #2ecc71;
+    width: 50%;
+    margin: 40px auto;
+}
+
+.error-message {
+    color: #e74c3c;
+    background-color: rgba(255, 255, 255, 0.75);
+    border: 1px solid #e74c3c;
+    width: 50%;
+    margin: 40px auto;
+}

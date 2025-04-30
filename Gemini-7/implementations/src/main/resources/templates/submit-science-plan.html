@@ -11,6 +11,12 @@
 <div class="filter-form">
     <h1>Available Science Plans</h1>
 
+    <!-- Success message -->
+    <div th:if="${successMessage}" class="success-message" th:text="${successMessage}"></div>
+
+    <!-- Error message -->
+    <div th:if="${errorMessage}" class="error-message" th:text="${errorMessage}"></div>
+
     <!-- Dropdown for selecting status filter -->
     <form th:action="@{/science-plan/submit}" method="get">
     <label for="status">Filter by Status:</label>
@@ -28,9 +34,11 @@
     </form>
 
     <div th:if="${noPlans}" class="error-message">
-        <div class="main-btn-group">
-            <a href="/science-plan/create" class="main-btn">Create Science Plan</a>
-        </div>
+        No available science plans for submission.
+    </div>
+
+    <div th:if="${noPlans}" class="main-btn-group">
+        <a href="/science-plan/create" class="main-btn">Create Science Plan</a>
     </div>
 
     <!-- Loop through plans and display them -->
@@ -43,10 +51,10 @@
         <p><strong>End Date: </strong> <span th:text="${plan.endDate}"></span></p>
         <p><strong>Status: </strong> <span th:text="${plan.status}"></span></p>
 
-        <!-- ปุ่มที่เรียก modal -->
-        <button type="button" class="submit-btn" th:data-id="${plan.planID}" th:data-status="${plan.status}">Submit</button>
+        <div class="plan-actions">
+            <button type="button" class="submit-btn" th:data-id="${plan.planID}" th:data-status="${plan.status}">Submit</button>
+        </div>
 
-        <!-- ฟอร์มที่ซ่อนไว้ -->
         <form th:action="@{/science-plan/submit/{planId}(planId=${plan.planID})}" method="post" th:id="'form-' + ${plan.planID}" style="display: none;">
             <input type="hidden" name="planId" th:value="${plan.planID}" />
         </form>
@@ -63,6 +71,9 @@
         <button id="cancel-btn">Cancel</button>
     </div>
 </div>
+
+<br>
+<br>
 
 <script>
     const submitButtons = document.querySelectorAll('.submit-btn');

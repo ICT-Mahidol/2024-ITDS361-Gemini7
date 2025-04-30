@@ -12,19 +12,19 @@ public class DataProcessingRequirement {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    public String fileType;
-    public String fileQuality;
-    public String colorType;
-    public double contrast;
-    public double brightness;
-    public double saturation;
-    public double exposure;
-    public double shadows;
-    public double highlights;
-    public double whites;
-    public double blacks;
-    public double luminance;
-    public double hue;
+    private String fileType;
+    private String fileQuality;
+    private String colorType;
+    private double contrast;
+    private double brightness;
+    private double saturation;
+    private double exposure;
+    private double shadows;
+    private double highlights;
+    private double whites;
+    private double blacks;
+    private double luminance;
+    private double hue;
 
     @OneToOne
     @JoinColumn(name = "science_plan_id")

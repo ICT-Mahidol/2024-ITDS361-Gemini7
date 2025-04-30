@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title>Test Science Plan</title>
     <link rel="stylesheet" href="/css/style.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 
@@ -20,19 +19,18 @@
     <div th:if="${errorMessage}" class="error-message" th:text="${errorMessage}"></div>
 
     <!-- Test result section -->
-    <div th:if="${testResults}">
+    <div th:if="${testResults}" class="test-results-box">
         <h3>Test Results for Plan ID: <span th:text="${testedPlanId}"></span> - <span th:text="${testedPlanName}"></span></h3>
         <ul>
-            <li th:each="entry : ${testResults}">
-                <strong th:text="${entry.key} + ':'"></strong>
-                <span th:text="${entry.value ? '✅ PASSED' : '❌ FAILED'}"
-                      th:classappend="${entry.value ? 'passed' : 'failed'}"></span>
+            <li th:each="entry : ${testResults}" th:classappend="${entry.value ? 'passed' : 'failed'}">
+                <span class="test-label" th:text="${entry.key}"></span>
+                <span class="test-status" th:text="${entry.value ? '✅ PASSED' : '❌ FAILED'}"></span>
             </li>
         </ul>
         <a href="/science-plan/finish" class="main-btn">Finish</a>
     </div>
 
-    <!-- No plan available -->
+     No plan available
     <div th:if="${noPlans}" class="error-message">
         No available science plans for testing.
     </div>
@@ -47,11 +45,13 @@
         <p><strong>End Date:</strong> <span th:text="${plan.endDate}"></span></p>
         <p><strong>Status:</strong> <span th:text="${plan.status}"></span></p>
 
-        <form th:action="@{/science-plan/test/{planId}(planId=${plan.planID})}" method="POST"
-              onsubmit="return showTestDetails(event, [[${plan.planID}]], '[[${plan.planName}]]');">
-            <input type="hidden" name="planId" th:value="${plan.planID}" />
-            <button type="submit" class="test-btn">Test</button>
-        </form>
+        <div class="plan-actions">
+            <form th:action="@{/science-plan/test/{planId}(planId=${plan.planID})}" method="POST"
+                  onsubmit="return showTestDetails(event, [[${plan.planID}]], '[[${plan.planName}]]');">
+                <input type="hidden" name="planId" th:value="${plan.planID}" />
+                <button type="submit" class="test-btn">Test</button>
+            </form>
+        </div>
     </div>
 </div>
 
@@ -59,27 +59,6 @@
     <a href="/science-plan/create" class="main-btn">Create Science Plan</a>
     <a href="/science-plan/submit" class="main-btn">Submit Science Plan</a>
 </div>
-
-<script>
-    function showTestDetails(event, planId, planName) {
-        const detailList = [
-            "✔ Star System Selection Test",
-            "✔ Image Processing Configuration Test",
-            "✔ Telescope Location Test",
-            "✔ Observation Duration Test"
-        ];
-
-        let alertMessage = `Plan ID: ${planId}\nPlan Name: ${planName}\n\nTest Details:\n`;
-        detailList.forEach(detail => {
-            alertMessage += detail + '\n';
-        });
-
-        alert(alertMessage);
-
-        // ให้ form ส่งต่อหลัง alert
-        return true;
-    }
-</script>
 
 </body>
 </html>
