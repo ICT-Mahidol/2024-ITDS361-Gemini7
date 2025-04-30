@@ -10,12 +10,8 @@ import th.ac.mahidol.ict.gemini7.dto.SciencePlanDTO;
 import th.ac.mahidol.ict.gemini7.facade.SciencePlanFacade;
 import th.ac.mahidol.ict.gemini7.model.SciencePlan;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
-
-import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
+import java.time.temporal.ChronoUnit;
+import java.util.*;
 
 @Controller
 @RequestMapping("/science-plan")
@@ -24,8 +20,9 @@ public class SciencePlanController {
     @Autowired
     private SciencePlanFacade facade;
 
+    // Create Science Plan
     @GetMapping("/create")
-    public String showCreateForm(HttpSession session, Model model)  {
+    public String showCreateForm(HttpSession session, Model model) {
         String username = (String) session.getAttribute("username"); // ดึงค่า username จาก session
         model.addAttribute("loginUser", username);  // ส่ง username ไปยัง Model
         model.addAttribute("sciencePlan", new SciencePlan());
@@ -42,7 +39,7 @@ public class SciencePlanController {
             facade.createSciencePlan(planDTO, username);
             model.addAttribute("success", true);
             return "redirect:/home";
-        }catch (IllegalArgumentException ex) {
+        } catch (IllegalArgumentException ex) {
             model.addAttribute("errorMessage", ex.getMessage());
             model.addAttribute("success", false);
         } catch (Exception ex) {
@@ -52,8 +49,9 @@ public class SciencePlanController {
         return "create-science-plan";
     }
 
+    // Test Science Plan
     @GetMapping("/test")
-    public String showTestForm(Model model)  {
+    public String showTestForm(Model model) {
         List<SciencePlan> plans = facade.getAllSciencePlans();
         if (plans.isEmpty()) {
             model.addAttribute("noPlans", true);
@@ -64,19 +62,83 @@ public class SciencePlanController {
     }
 
     @PostMapping("/test/{id}")
-    public String testSciencePlan(@PathVariable("id") Long planId, Model model) {
-        // อัปเดตสถานะเป็น "TESTED" ที่ backend
-        SciencePlan plan = facade.getSciencePlanById(planId);
-        plan.setStatus("TESTED");
-        facade.saveSciencePlan(plan); // บันทึกสถานะใหม่
-        System.out.println("Science Plan Status " + plan.getStatus());
+    public String testSciencePlan(@PathVariable("id") Long planId, RedirectAttributes redirectAttributes) {
+        try {
+            SciencePlan plan = facade.getSciencePlanById(planId);
+            if (plan == null) {
+                redirectAttributes.addFlashAttribute("errorMessage", "Your selected science plan does not exist.");
+                return "redirect:/science-plan/test";
+            }
 
-        // ส่งข้อมูลที่จำเป็นกลับไปยัง frontend
-//        model.addAttribute("testedPlanId", planId);
+            Map<String, Boolean> testResults = performAllTests(plan);
+            boolean allPassed = testResults.values().stream().allMatch(Boolean::booleanValue);
+
+            if (allPassed) {
+                plan.setStatus("TESTED");
+                facade.saveSciencePlan(plan);
+                redirectAttributes.addFlashAttribute("successMessage",
+                        "All tests passed. Science plan status updated to TESTED.");
+            } else {
+                redirectAttributes.addFlashAttribute("errorMessage",
+                        "Some test cases failed. Please see details below.");
+            }
+
+            redirectAttributes.addFlashAttribute("testResults", testResults);
+            redirectAttributes.addFlashAttribute("testedPlanId", plan.getPlanID());
+            redirectAttributes.addFlashAttribute("testedPlanName", plan.getPlanName());
+
+        } catch (Exception e) {
+            redirectAttributes.addFlashAttribute("errorMessage", "An unexpected error occurred.");
+        }
 
         return "redirect:/science-plan/test";
-//        return "test-science-plan";
     }
+
+    // Finish การทดสอบ
+    @GetMapping("/finish")
+    public String finishTest(RedirectAttributes redirectAttributes) {
+        redirectAttributes.addFlashAttribute("successMessage", "Testing process has been completed.");
+        return "redirect:/home";
+    }
+
+    // รายการ test cases ทั้งหมด
+    private Map<String, Boolean> performAllTests(SciencePlan plan) {
+        Map<String, Boolean> results = new LinkedHashMap<>();
+        results.put("Star System Selection Test", testStarSystem(plan));
+        results.put("Image Processing Configuration Test", testImageProcessing(plan));
+        results.put("Telescope Location Test", testTelescopeLocation(plan));
+        results.put("Observation Duration Test", testObservationDuration(plan));
+        return results;
+    }
+
+    private boolean testStarSystem(SciencePlan plan) {
+        System.out.println("plan.getStarSystem() : " + plan.getStarSystem() );
+        return plan.getStarSystem() != null && !plan.getStarSystem().trim().isEmpty();
+    }
+
+    private boolean testImageProcessing(SciencePlan plan) {
+        System.out.println("plan.getImageQuality() : " + plan.getDataProcRequirement().getFileQuality() );
+        System.out.println("plan.getContrast() : " + plan.getDataProcRequirement().getContrast() );
+        System.out.println("plan.getBrightness() : " + plan.getDataProcRequirement().getBrightness() );
+        System.out.println("plan.getSaturation() : " + plan.getDataProcRequirement().getSaturation() );
+
+        return "Fine".equals(plan.getDataProcRequirement().getFileQuality()) &&
+                plan.getDataProcRequirement().getContrast() > 0 &&
+                plan.getDataProcRequirement().getBrightness() > 0 &&
+                plan.getDataProcRequirement().getSaturation() > 0;
+    }
+
+    private boolean testTelescopeLocation(SciencePlan plan) {
+        System.out.println("plan.getTelescopeLocation() : " + plan.getTelescopeLocation() );
+        return plan.getTelescopeLocation() != null && !plan.getTelescopeLocation().trim().isEmpty();
+    }
+
+    private boolean testObservationDuration(SciencePlan plan) {
+        long duration = ChronoUnit.DAYS.between(plan.getStartDate(), plan.getEndDate());
+        System.out.println("Duration: " + duration + " days");
+        return duration >= 10;
+    }
+
 
     // Submit Science Plan
     // Display the plans with optional filtering

@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
+<a href="/home" class="home-button">Home</a>
 <div class="create-form">
     <h1>Create Science Plan</h1>
     <div class="create-top">
@@ -40,13 +41,26 @@
             </div>
         </div>
 
-        <div class="create-ic">
-            <label>telescope Location</label>
-            <select name="telescopeLocation">
-                <option value="">-- Select --</option>
-                <option value="hawaii">Hawaii</option>
-                <option value="chile">Chile</option>
-            </select>
+        <div class="row">
+            <div class="column create-ic">
+                <label>Star System</label>
+                <select name="starSystem">
+                    <option value="">-- Select --</option>
+                    <option value="Alpha Centauri">Alpha Centauri</option>
+                    <option value="Betelgeuse">Betelgeuse</option>
+                    <option value="Sirius">Sirius</option>
+                    <option value="Proxima Centauri">Proxima Centauri</option>
+                </select>
+            </div>
+
+            <div class="column create-ic">
+                <label>telescope Location</label>
+                <select name="telescopeLocation">
+                    <option value="">-- Select --</option>
+                    <option value="hawaii">Hawaii</option>
+                    <option value="chile">Chile</option>
+                </select>
+            </div>
         </div>
 
 

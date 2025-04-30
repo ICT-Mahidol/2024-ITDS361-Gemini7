@@ -20,7 +20,7 @@ public class SciencePlanBuilder {
     private String submitter;
     private String starSystem;
     private String telescopeLocation;
-    private DataProcessingRequirement dataProcessingRequirement;
+    private DataProcessingRequirement dataProcRequirement;
 
     public SciencePlanBuilder withPlanID(String planID) {
         this.planID = planID;
@@ -82,8 +82,8 @@ public class SciencePlanBuilder {
         return this;
     }
 
-    public SciencePlanBuilder withDataProcessingRequirement(DataProcessingRequirement dataProcessingRequirement) {
-        this.dataProcessingRequirement = dataProcessingRequirement;
+    public SciencePlanBuilder withDataProcRequirement(DataProcessingRequirement dataProcRequirement) {
+        this.dataProcRequirement = dataProcRequirement;
         return this;
     }
 
@@ -101,7 +101,7 @@ public class SciencePlanBuilder {
         sciencePlan.setSubmitter(this.submitter);
         sciencePlan.setStarSystem(this.starSystem);
         sciencePlan.setTelescopeLocation(this.telescopeLocation);
-        sciencePlan.setDataProcessingRequirement(this.dataProcessingRequirement);
+        sciencePlan.setDataProcRequirement(this.dataProcRequirement);
         return sciencePlan;
     }
 

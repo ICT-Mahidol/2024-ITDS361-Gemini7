@@ -29,8 +29,17 @@ public class SciencePlan {
     private String starSystem;
     private String telescopeLocation;
 
+    private String fileQuality;
+    private double contrast;
+    private double brightness;
+    private double saturation;
+
+
+
     @OneToOne(cascade = CascadeType.ALL)
-    private DataProcessingRequirement dataProcessingRequirement;
+    private DataProcessingRequirement dataProcRequirement;
+
+
 
     public boolean submitPlan() {
         this.status = "SUBMITTED";

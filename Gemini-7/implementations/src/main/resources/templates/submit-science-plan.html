@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
+<a href="/home" class="home-button">Home</a>
 
 <div class="filter-form">
     <h1>Available Science Plans</h1>
@@ -13,7 +14,7 @@
     <!-- Dropdown for selecting status filter -->
     <form th:action="@{/science-plan/submit}" method="get">
     <label for="status">Filter by Status:</label>
-        <select name="status" id="status">
+        <select name="status" id="status" onchange="this.form.submit()">
             <option value="ALL" th:selected="${status == 'ALL'}">All</option>
             <option value="CREATED" th:selected="${status == 'CREATED'}">Created</option>
             <option value="TESTED" th:selected="${status == 'TESTED'}">Tested</option>
@@ -24,7 +25,6 @@
             <option value="COMPLETE" th:selected="${status == 'COMPLETE'}">Complete</option>
             <option value="CANCELLED" th:selected="${status == 'CANCELLED'}">Cancelled</option>
         </select>
-        <button type="submit">Filter</button>
     </form>
 
     <div th:if="${noPlans}" class="error-message">
@@ -32,7 +32,6 @@
             <a href="/science-plan/create" class="main-btn">Create Science Plan</a>
         </div>
     </div>
-
 
     <!-- Loop through plans and display them -->
     <div th:each="plan : ${plans}" class="plan-box">

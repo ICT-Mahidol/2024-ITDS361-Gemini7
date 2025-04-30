@@ -41,7 +41,7 @@ public class SciencePlanService {
                 .withSubmitter(planDTO.getSubmitter())
                 .withStarSystem(planDTO.getStarSystem())
                 .withTelescopeLocation(planDTO.getTelescopeLocation())
-                .withDataProcessingRequirement(convertToDataProcRequirement(planDTO.getDataProcRequirement()))
+                .withDataProcRequirement(convertToDataProcRequirement(planDTO.getDataProcRequirement()))
                 .build();
 
         // save ลง database
@@ -93,13 +93,6 @@ public class SciencePlanService {
     }
 
     // Submit Science Plan
-//    public List<SciencePlan> getSciencePlansByStatus(String status) {
-//        return sciencePlanRepository.findByStatus(status);
-//    }
-//
-//    public void saveSciencePlan(SciencePlan plan) {
-//        sciencePlanRepository.save(plan);
-//    }
 
 }
 

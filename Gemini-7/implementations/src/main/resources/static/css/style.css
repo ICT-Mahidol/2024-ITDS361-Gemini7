@@ -19,6 +19,24 @@ body::before {
     background-color: rgba(0, 0, 0, 0.5);
     z-index: -1;
 }
+.home-button {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background-color: #ff8f33;
+    color: #fff;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    z-index: 1000;
+}
+
+.home-button:hover {
+    background-color: transparent;
+    border: 2px solid #fff;
+}
 
 .heading {
     padding: 100px 0px 50px 0px;
@@ -260,6 +278,88 @@ p {
 .test-result ul {
     padding-left: 20px;
 }
+/* Test result container */
+.test-form {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.test-form h1,
+.test-form h3 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+/* Success and error messages */
+.success-message {
+    color: #2ecc71;
+    background-color: #ecf9f1;
+    border: 1px solid #2ecc71;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    text-align: center;
+}
+
+.error-message {
+    color: #e74c3c;
+    background-color: #fbeaea;
+    border: 1px solid #e74c3c;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    text-align: center;
+}
+
+/* Result list */
+.test-form ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.test-form li {
+    margin: 10px 0;
+    font-size: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Status indicators */
+.passed {
+    color: #27ae60;
+    font-weight: bold;
+}
+
+.failed {
+    color: #c0392b;
+    font-weight: bold;
+}
+
+/* Finish button */
+.test-form .main-btn {
+    display: block;
+    margin: 30px auto 0;
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.test-form .main-btn:hover {
+    background-color: #2980b9;
+}
+
 
 /*SUBMIT STYLE*/
 /* ฟอร์มกรองสถานะ */
