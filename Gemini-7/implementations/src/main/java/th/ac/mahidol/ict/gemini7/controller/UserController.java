@@ -35,6 +35,10 @@ public class UserController {
     public String getHomePage(Model model) {
         return "home-page";
     }
+    @GetMapping("/homeUser")
+    public String getHomeUserPage(Model model) {
+        return "homeUser-page";
+    }
 
     @PostMapping("/signup")
     public String signup(@ModelAttribute User user, RedirectAttributes redirectAttributes) {
@@ -54,15 +58,25 @@ public class UserController {
     public String login(@ModelAttribute User user, RedirectAttributes redirectAttributes, HttpSession session){
         System.out.println("Login Request: " + user);
         User loginUser = userService.loginUser(user.getUsername(), user.getPassword());
+
         if(loginUser != null){
-            redirectAttributes.addFlashAttribute("loginUser", loginUser.getName());
+            System.out.println("loginUser.getRole(): " + loginUser.getRole());
+
             session.setAttribute("username", loginUser.getUsername());
-            return "redirect:/home";
+            redirectAttributes.addFlashAttribute("loginUser", loginUser.getName());
+
+            if ("astronomer".equals(loginUser.getRole())) {
+                return "redirect:/home";
+            } else {
+                return "redirect:/homeUser";
+            }
+
         } else {
             redirectAttributes.addFlashAttribute("loginRequest", new User());
             redirectAttributes.addFlashAttribute("errorMessage", "Login failed. Please try again.");
             return "redirect:/login";
         }
     }
+
 
 }
